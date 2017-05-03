@@ -5,3 +5,11 @@ web:
   volumes:
     - ./:/app
     - ./images/nginx/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+  links:
+    - php
+
+php:
+  image: nmcteam/php56
+  volumes:
+    - ./:/app
+    - ./images/php-fpm/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
