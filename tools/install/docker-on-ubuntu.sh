@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ ! -f /usr/bin/apt-get ]
+then
+    echo "Is it Ubuntu? This script is designed to run on Ubuntu (and compatible) systems only."
+    exit 1
+fi
+
 # Remove old docker
 sudo apt-get remove docker docker-engine
 
@@ -24,6 +30,11 @@ sudo apt-get update
 
 # Install docker ee
 sudo apt-get install docker-ce
+
+# install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+chmod +x ./docker-compose
+sudo move ./docker-compose /usr/local/bin/docker-compose
 
 # Verify docker is running
 sudo docker run hello-world
