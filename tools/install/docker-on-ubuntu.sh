@@ -22,7 +22,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # Install docker repository
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
+   xenial \
    stable"
 
 # Update apt index
@@ -34,7 +34,7 @@ sudo apt-get install docker-ce
 # install docker-compose
 curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
 chmod +x ./docker-compose
-sudo move ./docker-compose /usr/local/bin/docker-compose
+sudo mv ./docker-compose /usr/local/bin/docker-compose
 
 # Verify docker is running
 sudo docker run hello-world
